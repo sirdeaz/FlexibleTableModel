@@ -57,8 +57,13 @@ public class FlexibleTableModel<T> extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        // TODO: implement me!! :'((
-        return dataItems.get(rowIndex);
+        try {
+            Field f  = dataItems.get(rowIndex).getClass().getDeclaredField(headers.get(columnIndex));
+            f.setAccessible(true);
+            return f.get(dataItems.get(rowIndex));
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
     }
 
     private void setupModel(Class<T> c) {
