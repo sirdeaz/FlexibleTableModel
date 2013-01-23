@@ -10,7 +10,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
- *
+ * Test on cloud-ide
  * @author fdidd
  */
 public class FlexibleTableModel<T> extends AbstractTableModel {
@@ -23,7 +23,6 @@ public class FlexibleTableModel<T> extends AbstractTableModel {
     public FlexibleTableModel(RefreshAction<T> refreshAction, Class<T> c, boolean asyncRefresh) {
         this.refreshAction = refreshAction;
         this.asyncRefresh = asyncRefresh;
-
         doRefresh();
         setupModel(c);
     }
